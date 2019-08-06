@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+
+{% block app_content %}
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">郎晓伟 {{ title }}</h1>
+        <p class="lead blog-description" align="center"><b>人生苦短，我用Python</b></p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+            {% for post in posts %}
+                <div class="blog-post">
+                <h2 class="blog-post-title"><a href="{{ url_for('main.get_blog',id=post.id) }}">{{ post.title }}</a> </h2>
+                <p class="blog-post-meta">{{ moment(post.timestamp).format('YYYY-M-D') }} by {{ post.author.username }}</p>
+                {#{{ post.html_body| safe | truncate(200, True)}} #}
+                </div><!-- /.alex_blog-post -->
+            {% endfor %}
+        </div><!-- /.alex_blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>关于</h4>
+            <p>吃的苦中苦，背得锅上锅。</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>归档</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">十二月</a></li>
+              <li><a href="#">十一月</a></li>
+              <li><a href="#">十月</a></li>
+              <li><a href="#">九月</a></li>
+              <li><a href="#">八月</a></li>
+              <li><a href="#">七月</a></li>
+              <li><a href="#">六月</a></li>
+              <li><a href="#">五月</a></li>
+              <li><a href="#">四月</a></li>
+              <li><a href="#">三月</a></li>
+              <li><a href="#">二月</a></li>
+              <li><a href="#">一月</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>链接</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div><!-- /.alex_blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+{% endblock %}
