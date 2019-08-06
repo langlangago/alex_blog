@@ -30,6 +30,7 @@ class Post(db.Model):
     html_body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     type = db.Column(db.Enum('post', 'review'), default='post')
+    age = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
